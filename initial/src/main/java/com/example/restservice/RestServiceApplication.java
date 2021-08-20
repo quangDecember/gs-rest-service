@@ -35,6 +35,8 @@ public class RestServiceApplication {
 	// Rest service
 	// Consuming REST service
 	// Serving web service with Spring MVC
+	// [X] Accessing JPA Data with REST: https://spring.io/guides/gs/accessing-data-rest/
+	// Accessing data with MySQL: https://spring.io/guides/gs/accessing-data-mysql/
 
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate, CustomerRepository customerRepository) throws Exception {
