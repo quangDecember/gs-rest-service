@@ -9,16 +9,21 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+
 @SpringBootApplication
+@ImportResource("/integration/integration.xml")
 public class RestServiceApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(RestServiceApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(RestServiceApplication.class, args);
+	public static void main(String[] args) throws IOException {
+		ConfigurableApplicationContext ctx = SpringApplication.run(RestServiceApplication.class, args);
 	}
 
 	@Bean
@@ -29,6 +34,7 @@ public class RestServiceApplication {
 	// Accessing Data with JPA  https://spring.io/guides/gs/accessing-data-jpa/
 	// Rest service
 	// Consuming REST service
+	// Serving web service with Spring MVC
 
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate, CustomerRepository customerRepository) throws Exception {
@@ -70,4 +76,5 @@ public class RestServiceApplication {
 			log.info("");
 		};
 	}
+
 }
